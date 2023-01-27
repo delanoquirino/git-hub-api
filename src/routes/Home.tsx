@@ -26,6 +26,7 @@ export const Home = () => {
       borderWidth="1px"
       rounded="lg"
       boxShadow="md"
+      bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
     >
       <Search loadUser={loadUser} />
     </Box>
