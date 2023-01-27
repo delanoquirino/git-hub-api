@@ -1,12 +1,21 @@
 import { useState } from "react";
 
 import { Box } from "@chakra-ui/react";
+import { UserProps } from "../types/user";
 
 // components
 import { Search } from "../components/Search";
 
 export const Home = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<UserProps | null>(null);
+
+  const loadUser = async (userName: string) => {
+    const res = await fetch(`https://api.github.com/users/${userName}`);
+
+    const data = await res.json();
+
+    console.log(data);
+  };
 
   return (
     <Box
@@ -18,7 +27,7 @@ export const Home = () => {
       rounded="lg"
       boxShadow="md"
     >
-      <Search />
+      <Search loadUser={loadUser} />
     </Box>
   );
 };

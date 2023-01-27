@@ -1,3 +1,8 @@
+type SearchProps = {
+  // recebendo uma promossa, como em uma api
+  loadUser: (userName: string) => Promise<void>;
+};
+
 import {
   Card,
   CardBody,
@@ -11,9 +16,13 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
+import { useState } from "react";
+
 import { BsSearch } from "react-icons/bs";
 
-export const Search = () => {
+export const Search = ({ loadUser }: SearchProps) => {
+  const [userName, setUserName] = useState("");
+
   return (
     <div>
       <Card>
@@ -28,8 +37,11 @@ export const Search = () => {
               </Text>
             </Box>
             <Flex gap={2}>
-              <Input placeholder="Basic usage" />
-              <Button colorScheme="blue">
+              <Input
+                placeholder="Basic usage"
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <Button colorScheme="blue" onClick={() => loadUser(userName)}>
                 <BsSearch />
               </Button>
             </Flex>
