@@ -6,8 +6,7 @@ export const theme = extendTheme({
       "html, body": {
         color: "white",
         lineHeight: "tall",
-        bgGradient:
-          "linear(to-r,rgba(250,109,201,1) 0%, rgba(254,172,122,1) 33%, rgba(216,44,73,1) 100%)",
+        bg: "#353333",
       },
       fonts: {
         fontFamily: `'Popins', sans-serif`,
