@@ -5,6 +5,7 @@ import { UserProps } from "../types/user";
 
 // components
 import { Search } from "../components/Search";
+import { User } from "../components/User";
 
 export const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
@@ -41,7 +42,7 @@ export const Home = () => {
       bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
     >
       <Search loadUser={loadUser} />
-      {user && <Text>{user.login}</Text>}
+      {user && <User {...user} />}
     </Box>
   );
 };
