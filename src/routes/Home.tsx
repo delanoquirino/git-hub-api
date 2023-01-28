@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { UserProps } from "../types/user";
 
 // components
@@ -14,7 +14,19 @@ export const Home = () => {
 
     const data = await res.json();
 
-    console.log(data);
+    // destruction
+    const { avatar_url, login, location, followers, following } = data;
+
+    // constituir novo objeto com as variaveis acima
+    const userData: UserProps = {
+      avatar_url,
+      login,
+      location,
+      followers,
+      following,
+    };
+
+    setUser(userData);
   };
 
   return (
@@ -29,6 +41,7 @@ export const Home = () => {
       bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
     >
       <Search loadUser={loadUser} />
+      {user && <Text>{user.login}</Text>}
     </Box>
   );
 };

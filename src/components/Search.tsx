@@ -1,5 +1,5 @@
 type SearchProps = {
-  // recebendo uma promossa, como em uma api
+  // recebendo uma promessa, como em uma api
   loadUser: (userName: string) => Promise<void>;
 };
 
@@ -38,7 +38,7 @@ export const Search = ({ loadUser }: SearchProps) => {
             </Box>
             <Flex gap={2}>
               <Input
-                placeholder="Basic usage"
+                placeholder="Digite o nome do usuário"
                 onChange={(e) => setUserName(e.target.value)}
               />
               <Button colorScheme="blue" onClick={() => loadUser(userName)}>
