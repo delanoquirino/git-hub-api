@@ -28,28 +28,26 @@ export const Search = ({ loadUser }: SearchProps) => {
     }
   };
   return (
-    <div>
-      <Card>
-        <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
-            <Box>
-              <Heading size="xs" textTransform="uppercase">
-                Busque por um usuário:
-              </Heading>
-            </Box>
-            <Flex gap={2}>
-              <Input
-                placeholder="Digite o nome do usuário"
-                onChange={(e) => setUserName(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
-              <Button colorScheme="blue" onClick={() => loadUser(userName)}>
-                <BsSearch />
-              </Button>
-            </Flex>
-          </Stack>
-        </CardBody>
-      </Card>
-    </div>
+    <Card>
+      <CardBody>
+        <Stack divider={<StackDivider />} spacing="2">
+          <Box>
+            <Heading size="xs" textTransform="uppercase">
+              Busque por um usuário:
+            </Heading>
+          </Box>
+          <Flex gap={2}>
+            <Input
+              placeholder="Digite o nome do usuário"
+              onChange={(e) => setUserName(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <Button colorScheme="blue" onClick={() => loadUser(userName)}>
+              <BsSearch />
+            </Button>
+          </Flex>
+        </Stack>
+      </CardBody>
+    </Card>
   );
 };

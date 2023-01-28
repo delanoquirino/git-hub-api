@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div>
-      <h1>GitHub Api</h1>
       <Outlet />
     </div>
   );

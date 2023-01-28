@@ -32,17 +32,25 @@ export const Home = () => {
 
   return (
     <Box
-      width="800px"
-      height="500px"
-      margin="auto"
-      padding="20px"
-      borderWidth="1px"
-      rounded="lg"
-      boxShadow="md"
-      bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
+      width="100vw"
+      height="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
     >
-      <Search loadUser={loadUser} />
-      {user && <User {...user} />}
+      <Box
+        width="80%"
+        height="auto"
+        margin="auto"
+        padding="20px"
+        borderWidth="1px"
+        rounded="lg"
+        boxShadow="md"
+        bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
+      >
+        <Search loadUser={loadUser} />
+        {user && <User {...user} />}
+      </Box>
     </Box>
   );
 };

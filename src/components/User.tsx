@@ -1,4 +1,4 @@
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { UserProps } from "../types/user";
 
 import { MdLocationPin } from "react-icons/md";
@@ -12,30 +12,32 @@ export const User = ({
   following,
 }: UserProps) => {
   return (
-    <Box boxSize="sm">
-      <Image src={avatar_url} alt="login" borderRadius="full" />
-      <Text>{login}</Text>
-      <Text>
-        <Text fontSize="lg">
-          {location && (
-            <Box>
-              <MdLocationPin />
-              {location}
-            </Box>
-          )}
-        </Text>
-        <div>
-          <div>
+    <Flex p="10" gap="10">
+      <Image src={avatar_url} alt="login" borderRadius="full" boxSize="200px" />
+      <Box>
+        <Text fontSize="35px">{login}</Text>
+        <Text display="flex" flexDirection="column" gap="2">
+          <Box>
+            {location && (
+              <Box display="flex" alignItems="center" gap="2">
+                <MdLocationPin />
+                {location}
+              </Box>
+            )}
+          </Box>
+
+          <Box display="flex" alignItems="center" gap="2">
             <p>Seguidores</p>
             <p>{followers}</p>
-          </div>
-          <div>
+          </Box>
+          <Box display="flex" alignItems="center" gap="2">
             <p>Seguindo</p>
             <p>{following}</p>
-          </div>
-        </div>
-        <Link to="/repos/${login}">Ver melhores projetos</Link>
-      </Text>
-    </Box>
+          </Box>
+
+          <Link to="/repos/${login}">Ver melhores projetos</Link>
+        </Text>
+      </Box>
+    </Flex>
   );
 };
