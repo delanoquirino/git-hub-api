@@ -64,9 +64,7 @@ export const User = ({
             </Box>
           </Box>
 
-          <Button bg="#3182CE" textAlign="center" p="5" borderRadius="2xl">
-            <Link to="/repos/${login}">Ver melhores projetos</Link>
-          </Button>
+          <Box></Box>
         </Text>
       </Box>
     </Flex>
