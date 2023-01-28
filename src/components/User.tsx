@@ -27,11 +27,11 @@ export const User = ({
           </Box>
 
           <Box display="flex" alignItems="center" gap="2">
-            <p>Seguidores</p>
+            <p>Seguidores: </p>
             <p>{followers}</p>
           </Box>
           <Box display="flex" alignItems="center" gap="2">
-            <p>Seguindo</p>
+            <p>Seguindo: </p>
             <p>{following}</p>
           </Box>
 

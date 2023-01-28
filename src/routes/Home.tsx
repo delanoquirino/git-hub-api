@@ -6,14 +6,23 @@ import { UserProps } from "../types/user";
 // components
 import { Search } from "../components/Search";
 import { User } from "../components/User";
+import { Error } from "../components/Error";
 
 export const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
+  const [error, setError] = useState(false);
 
   const loadUser = async (userName: string) => {
+    setError(false);
+    setUser(null);
     const res = await fetch(`https://api.github.com/users/${userName}`);
 
     const data = await res.json();
+
+    if (res.status === 404) {
+      setError(true);
+      return;
+    }
 
     // destruction
     const { avatar_url, login, location, followers, following } = data;
@@ -31,24 +40,27 @@ export const Home = () => {
   };
 
   return (
-    <Box
-      width="100vw"
-      height="100vh"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Box maxWidth="800px" margin="auto">
       <Box
-        width="80%"
-        height="auto"
+        width="70%"
         margin="auto"
-        padding="20px"
+        mt="20px"
+        padding="2"
         borderWidth="1px"
         rounded="lg"
         boxShadow="md"
-        bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
       >
         <Search loadUser={loadUser} />
+
+        {error && <Error />}
+      </Box>
+      <Box
+        bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
+        margin="auto"
+        width="70%"
+        mt="19"
+        borderRadius="5px"
+      >
         {user && <User {...user} />}
       </Box>
     </Box>

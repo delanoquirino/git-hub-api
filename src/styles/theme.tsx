@@ -10,8 +10,7 @@ export const theme = extendTheme({
           "linear(to-r,rgba(250,109,201,1) 0%, rgba(254,172,122,1) 33%, rgba(216,44,73,1) 100%)",
       },
       fonts: {
-        heading: "'Poppins', sans-serif",
-        body: "'Poppins', sans-serif",
+        fontFamily: `'Popins', sans-serif`,
       },
     },
   },
