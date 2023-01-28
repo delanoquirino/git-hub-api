@@ -7,17 +7,21 @@ import { UserProps } from "../types/user";
 import { Search } from "../components/Search";
 import { User } from "../components/User";
 import { Error } from "../components/Error";
+import { Loader } from "../components/Loader";
 
 export const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadUser = async (userName: string) => {
     setError(false);
     setUser(null);
+    setIsLoading(true);
     const res = await fetch(`https://api.github.com/users/${userName}`);
 
     const data = await res.json();
+    setIsLoading(false);
 
     if (res.status === 404) {
       setError(true);
@@ -51,8 +55,10 @@ export const Home = () => {
         boxShadow="md"
       >
         <Search loadUser={loadUser} />
-
-        {error && <Error />}
+        <Box textAlign="center">
+          {isLoading && <Loader />}
+          {error && <Error />}
+        </Box>
       </Box>
       <Box bg="#504a4a" margin="auto" width="70%" mt="19" borderRadius="5px">
         {user && <User {...user} />}
