@@ -54,13 +54,7 @@ export const Home = () => {
 
         {error && <Error />}
       </Box>
-      <Box
-        bgGradient="linear(to-r, rgba(11,175,255,1), #0aefff,rgba(32,254,255,1))"
-        margin="auto"
-        width="70%"
-        mt="19"
-        borderRadius="5px"
-      >
+      <Box bg="#504a4a" margin="auto" width="70%" mt="19" borderRadius="5px">
         {user && <User {...user} />}
       </Box>
     </Box>
