@@ -16,13 +16,17 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 
 import { BsSearch } from "react-icons/bs";
 
 export const Search = ({ loadUser }: SearchProps) => {
   const [userName, setUserName] = useState("");
-
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      loadUser(userName);
+    }
+  };
   return (
     <div>
       <Card>
@@ -32,14 +36,12 @@ export const Search = ({ loadUser }: SearchProps) => {
               <Heading size="xs" textTransform="uppercase">
                 Busque por um usuário:
               </Heading>
-              <Text pt="2" fontSize="sm">
-                Conheça seus melhores repositórios
-              </Text>
             </Box>
             <Flex gap={2}>
               <Input
                 placeholder="Digite o nome do usuário"
                 onChange={(e) => setUserName(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
               <Button colorScheme="blue" onClick={() => loadUser(userName)}>
                 <BsSearch />
